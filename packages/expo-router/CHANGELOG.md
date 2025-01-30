@@ -10,6 +10,7 @@
 ### 🎉 New features
 
 - Add static redirects to config plugin. ([#34734](https://github.com/expo/expo/pull/34734) by [@marklawlor](https://github.com/marklawlor))
+- Add `router.preload(<href>)` and `<Link preload href={}>`
 
 ### 🐛 Bug fixes
 
