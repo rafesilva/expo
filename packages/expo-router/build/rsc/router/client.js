@@ -262,9 +262,6 @@ function useRouter_UNSTABLE() {
         setParams() {
             throw new Error('router.setParams() is not supported in React Server Components yet');
         },
-        preload() {
-            throw new Error('router.preload() is not supported in React Server Components yet');
-        },
         // TODO: The behavior here is not the same as before.
         navigate: push,
         push,
@@ -273,6 +270,7 @@ function useRouter_UNSTABLE() {
         back,
         forward,
         prefetch,
+        preload: prefetch,
     };
 }
 exports.useRouter_UNSTABLE = useRouter_UNSTABLE;
