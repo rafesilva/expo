@@ -5,12 +5,6 @@ set -xeuo pipefail
 ROOT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )"/../../.. && pwd )"
 export PATH="$ROOT_DIR/bin:$PATH"
 
-# Is this actually set properly?
-echo $EXPO_VERSIONS_SECRET
-
-direnv allow
-echo $EXPO_VERSIONS_SECRET
-
 # Bail out if the versions endpoint is not available
 et eas verify-versions-endpoint-available
 

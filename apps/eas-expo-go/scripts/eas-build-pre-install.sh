@@ -20,7 +20,11 @@ if [ "$EAS_BUILD_PROFILE" = "release-client" ] || [ "$EAS_BUILD_PROFILE" = "publ
   elif [ "$EAS_BUILD_PLATFORM" = "ios" ]; then
     HOMEBREW_NO_AUTO_UPDATE=1 brew install git-crypt
   fi
+  # Log the encrypted files
+  git-crypt status -e
   git-crypt unlock $GIT_CRYPT_KEY
+  # Log the encrypted files again to ensure they're unlocked
+  git-crypt status -e
 fi
 
 cat << EOF > $ROOT_DIR/.gitmodules
