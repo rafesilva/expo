@@ -5,6 +5,9 @@ set -xeuo pipefail
 ROOT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )"/../../.. && pwd )"
 export PATH="$ROOT_DIR/bin:$PATH"
 
+# Bail out if the versions endpoint is not available
+et eas verify-versions-endpoint-available
+
 if [ "$EAS_BUILD_PLATFORM" = "ios" ]; then
   et ios-generate-dynamic-macros
 fi

@@ -63,6 +63,12 @@ const CUSTOM_ACTIONS: Record<string, Action> = {
     action: internalIosSimulatorPublishAsync,
     internal: true,
   },
+  'verify-versions-endpoint-available': {
+    name: '[internal] Verify that the versions endpoint is available',
+    actionId: 'verify-versions-endpoint-available',
+    action: verifyVersionsEndpointAvailableAsync,
+    internal: true,
+  },
   'android-apk-publish': {
     name: '[internal] Upload Android client to S3 and update www endpoint',
     actionId: 'android-apk-publish',
@@ -70,6 +76,13 @@ const CUSTOM_ACTIONS: Record<string, Action> = {
     internal: true,
   },
 };
+
+export async function verifyVersionsEndpointAvailableAsync() {
+  await modifySdkVersionsAsync('53.0.0', (sdkVersions) => {
+    (sdkVersions as any).sentinel = new Date().toISOString();
+    return sdkVersions;
+  });
+}
 
 export default (program: Command) => {
   program
